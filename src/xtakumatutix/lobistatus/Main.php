@@ -16,7 +16,6 @@ Class Main extends PluginBase
 
     public function onEnable() 
     {
-        $this->getLogger()->notice("起動メッセージを送信しました - ver.".$this->getDescription()->getVersion());
         $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, [
             'mail' => 'test@gmail.com',
             'password' => '123456',
