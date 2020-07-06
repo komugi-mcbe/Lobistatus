@@ -21,17 +21,17 @@ Class Main extends PluginBase
             'password' => '123456',
             'guild' => 'A1B2C3D4E5F6G7'
         ]);
-        $message = 'サーバーオープン';
+        $message = 'サーバーが開きました ('.date('m月d日 G時i分').')';
         $name = '小麦鯖 - Open';
-        $description = '開いています';
+        $description = '開いています ('.date('m月d日 G時i分').')';
         $this->post($message, $name, $description);
     }
 
     public function onDisable()
     {
-        $message = 'サーバークローズ';
+        $message = 'サーバーが閉じました ('.date('m月d日 G時i分').')';
         $name = '小麦鯖 - Close';
-        $description = '閉じてます';        
+        $description = '閉じてます ('.date('m月d日 G時i分').')';        
         $this->post($message, $name, $description);
     }
 
@@ -43,7 +43,7 @@ Class Main extends PluginBase
         $guild = $this->config->get('guild');
         if ($api->Login($mail, $password)){
             $this->getLogger()->info('メールでのLobiログイン成功');
-            $api->MakeThread($guild, $message, $shout = true);
+            $api->MakeThread($guild, $message, $shout = false);
             $api->ChangeProfile($name, $description);
             $this->getLogger()->info('送信完了 - プロフィール変更完了');
         }else{
